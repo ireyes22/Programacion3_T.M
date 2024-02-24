@@ -9,9 +9,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -53,13 +58,74 @@ public class Ventana extends JFrame{
 	
 	public void iniciarComponentes() {
 	
-		this.login();
+		//this.login();
+		//this.registro();
+		this.admin();
 
 		//size
 		//location
 		//background-opaque
 		//string cosntructor
 
+		this.repaint();
+		this.validate();
+	}
+	
+	public void login() {
+
+		JPanel login = new JPanel();
+		login.setSize(this.getWidth(), this.getHeight());
+		login.setBackground(Color.red);
+		this.add(login);
+		login.setSize(this.getWidth()/2, this.getHeight());//el panel aparece a la mitad del frame
+		login.setBackground(new Color(128, 188, 189));//añade color en RGB
+		login.setLayout(null);//quitar el molde
+
+		JLabel login_title = new JLabel("ACCEDER",0);
+		login_title.setSize(300, 80);//tamaño del texto
+		login_title.setFont(new Font("Comic Sans MS",Font.BOLD,38));//establece fuente del texto
+		login_title.setForeground(Color.blue);//cambiar color al texto
+		login_title.setLocation(100,20);//añade en donde localizar el componente
+		login_title.setOpaque(true);//agrega fondo al texto
+		login_title.setBackground(Color.ORANGE);//color al fondo del texto
+		add(login_title);
+
+		JLabel usuario = new JLabel("NOMBRE DE USUARIO: ");
+		usuario.setBounds(10,120,250,40);//(x,y,ancho,alto)
+		usuario.setFont(new Font("Comic Sans MS",Font.BOLD,20));//establece fuente del texto
+		login.add(usuario);//añade el componente
+
+		JTextField email = new JTextField();
+	    email.setBounds(10, 160, 300, 40); // Ajustar las coordenadas y tamaño del campo de texto
+	    login.add(email);
+
+		JLabel contraseña = new JLabel("CONTRASEÑA: ");
+		contraseña.setBounds(10,220,250,40);//(x,y,ancho,alto)
+		contraseña.setFont(new Font("Comic Sans MS",Font.BOLD,20));//establece fuente del texto
+		login.add(contraseña);//añade el componente
+
+		JPasswordField pwd_field = new JPasswordField();
+	    pwd_field.setBounds(10, 260, 300, 40); // Ajustar las coordenadas y tamaño del campo de contraseña
+	    login.add(pwd_field);
+
+		JCheckBox remember = new JCheckBox("Recordarme");
+		remember.setBounds(10, 300, 150, 40);
+		remember.setOpaque(false);//vuelve opaco el fondo de la casilla
+		login.add(remember);
+
+		JLabel forgot = new JLabel("¿Olvidó su contraseña?");
+		forgot.setBounds(160,300,150,40);//(x,y,ancho,alto)
+		login.add(forgot);//añade el componente
+
+		JButton accept = new JButton("Acceder");
+		accept.setFont(new Font("Comic Sans MS",Font.BOLD,28));//establece fuente del texto
+		accept.setBounds(50, 340, 200, 70);
+		login.add(accept);
+
+		this.add(login);//añadir el panel de login
+	}
+	
+	public void registro() {
 		JPanel registro = new JPanel();//crear otro panel
 		registro.setSize(this.getWidth()/2, this.getHeight());
 		registro.setBackground(Color.decode("#9195F6"));//añade color en RGB
@@ -161,62 +227,117 @@ public class Ventana extends JFrame{
 		registro.add(accept);
 
 		this.add(registro);//añadir el panel de registro
-
-		this.repaint();
-		this.validate();
 	}
 	
-	public void login() {
+	public void admin() {
+		//añadir panel
+		JPanel adminPanel = new JPanel();//crear otro panel
+		adminPanel.setSize(this.getWidth(), this.getHeight());
+		adminPanel.setBackground(Color.decode("#FF407D"));//añade color en RGB
+		adminPanel.setLocation(0,0);//el panel aparece en la otra mitad del frame
+		adminPanel.setLayout(null);//quitar el molde para modificar
 
-		JPanel login = new JPanel();
-		login.setSize(this.getWidth(), this.getHeight());
-		login.setBackground(Color.red);
-		this.add(login);
-		login.setSize(this.getWidth()/2, this.getHeight());//el panel aparece a la mitad del frame
-		login.setBackground(new Color(128, 188, 189));//añade color en RGB
-		login.setLayout(null);//quitar el molde
+		//añadir menu
+		JMenuBar barra = new JMenuBar();//crea menu padre
 
-		JLabel login_title = new JLabel("ACCEDER",0);
+		JMenu menuFile = new JMenu("Archivo");//añade un menu
+
+		JMenuItem openItem = new JMenuItem("Abrir archivo");//añade submenus al menu
+		JMenuItem createItem = new JMenuItem("Crear archivo");
+
+		barra.add(menuFile);//relaciona los menus (los junta)
+		menuFile.add(openItem);
+		menuFile.add(createItem);
+
+		this.setJMenuBar(barra);
+
+		//titulo
+		JLabel login_title = new JLabel("USUARIOS",0);
 		login_title.setSize(300, 80);//tamaño del texto
 		login_title.setFont(new Font("Comic Sans MS",Font.BOLD,38));//establece fuente del texto
-		login_title.setForeground(Color.blue);//cambiar color al texto
-		login_title.setLocation(100,20);//añade en donde localizar el componente
+		login_title.setForeground(Color.white);//cambiar color al texto
+		login_title.setLocation(350,20);//añade en donde localizar el componente
 		login_title.setOpaque(true);//agrega fondo al texto
-		login_title.setBackground(Color.ORANGE);//color al fondo del texto
-		add(login_title);
+		login_title.setBackground(Color.BLACK);//color al fondo del texto
+		adminPanel.add(login_title);
 
-		JLabel usuario = new JLabel("NOMBRE DE USUARIO: ");
-		usuario.setBounds(10,120,250,40);//(x,y,ancho,alto)
-		usuario.setFont(new Font("Comic Sans MS",Font.BOLD,20));//establece fuente del texto
-		login.add(usuario);//añade el componente
+		/*JLabel widget = new JLabel();
+		widget.setBounds(40,120,300,100);
+		widget.setOpaque(true);
+		widget.setBackground(Color.BLACK);
+		adminPanel.add(widget);*/
 
-		JTextField email = new JTextField();
-	    email.setBounds(10, 160, 300, 40); // Ajustar las coordenadas y tamaño del campo de texto
-	    login.add(email);
+		JLabel title_widget = new JLabel("Total de usuarios",0);
+		title_widget.setFont(new Font("Comic Sans MS",Font.BOLD,20));//establece fuente del texto
+		title_widget.setBounds(40,120,300,40);
+		title_widget.setForeground(Color.white);
+		adminPanel.add(title_widget);
 
-		JLabel contraseña = new JLabel("CONTRASEÑA: ");
-		contraseña.setBounds(10,220,250,40);//(x,y,ancho,alto)
-		contraseña.setFont(new Font("Comic Sans MS",Font.BOLD,20));//establece fuente del texto
-		login.add(contraseña);//añade el componente
+		JLabel number_widget = new JLabel("100",0);
+		number_widget.setFont(new Font("Comic Sans MS",Font.BOLD,20));//establece fuente del texto
+		number_widget.setBounds(40,160,300,40);
+		number_widget.setForeground(Color.white);
+		adminPanel.add(number_widget);
 
-		JPasswordField pwd_field = new JPasswordField();
-	    pwd_field.setBounds(10, 260, 300, 40); // Ajustar las coordenadas y tamaño del campo de contraseña
-	    login.add(pwd_field);
+		JLabel widget = new JLabel();
+		widget.setBounds(40,120,300,100);
+		widget.setOpaque(true);
+		widget.setBackground(Color.BLACK);
+		adminPanel.add(widget);
 
-		JCheckBox remember = new JCheckBox("Recordarme");
-		remember.setBounds(10, 300, 150, 40);
-		remember.setOpaque(false);//vuelve opaco el fondo de la casilla
-		login.add(remember);
+		//botones
+		JButton descargar = new JButton("Exportar");
+		descargar.setBounds(750,230,100,40);
+		descargar.setOpaque(true);
+		descargar.setBackground(Color.white);
+		adminPanel.add(descargar);
 
-		JLabel forgot = new JLabel("¿Olvidó su contraseña?");
-		forgot.setBounds(160,300,150,40);//(x,y,ancho,alto)
-		login.add(forgot);//añade el componente
+		JButton addUser = new JButton("Añadir");
+		addUser.setBounds(860,230,100,40);
+		addUser.setOpaque(true);
+		addUser.setBackground(Color.white);
+		adminPanel.add(addUser);
 
-		JButton accept = new JButton("Acceder");
-		accept.setFont(new Font("Comic Sans MS",Font.BOLD,28));//establece fuente del texto
-		accept.setBounds(50, 340, 200, 70);
-		login.add(accept);
+		//añadir tabla
 
-		this.add(login);//añadir el panel de login
+		String title[]= {"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"};
+		String tableData[][]= {
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"}
+		};
+
+		JTable tablaUser = new JTable(tableData,title);
+		//tablaUser.setBounds(40,280,920,300);
+		JScrollPane tableScroll = new JScrollPane(tablaUser);
+		tableScroll.setBounds(40,280,920,300);
+		adminPanel.add(tableScroll);
+
+		this.add(adminPanel);//añade el nuevo panel al frame
 	}
 }
