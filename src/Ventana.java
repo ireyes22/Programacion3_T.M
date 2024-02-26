@@ -60,7 +60,8 @@ public class Ventana extends JFrame{
 	
 		//this.login();
 		//this.registro();
-		this.admin();
+		//this.admin();
+		this.calculator();
 
 		//size
 		//location
@@ -340,4 +341,177 @@ public class Ventana extends JFrame{
 
 		this.add(adminPanel);//añade el nuevo panel al frame
 	}
+
+	public void calculator() {
+		
+		JPanel calculator = new JPanel();
+		calculator.setSize(this.getWidth()/2, this.getHeight());
+		calculator.setBackground(Color.decode("#0F0F0F"));//añade color en RGB
+		calculator.setLocation(0,0);//el panel aparece en la otra mitad del frame
+		calculator.setLayout(null);//quitar el molde para modificar
+		
+		JTextField pantalla = new JTextField ();//pantalla de la calculadora
+		pantalla.setBounds(20,20,460,100);
+		pantalla.setBackground(Color.decode("#232D3F"));
+		calculator.add(pantalla);
+		
+		JButton borrar = new JButton("CE");
+		borrar.setBounds(20,140,100,90);
+		borrar.setOpaque(true);
+		borrar.setBackground(Color.decode("#232D3F"));
+		borrar.setFont(new Font("Franklin Gothic",Font.BOLD,30));//establece fuente del texto
+		borrar.setForeground(Color.decode("#008170"));//cambiar color al texto
+		calculator.add(borrar);
+		
+		JButton boton1 = new JButton("");
+		boton1.setBounds(140,140,100,90);
+		boton1.setOpaque(true);
+		boton1.setBackground(Color.decode("#232D3F"));
+		calculator.add(boton1);
+		
+		JButton boton2 = new JButton("");
+		boton2.setBounds(260,140,100,90);
+		boton2.setOpaque(true);
+		boton2.setBackground(Color.decode("#232D3F"));
+		calculator.add(boton2);
+		
+		JButton boton3 = new JButton("");
+		boton3.setBounds(380,140,100,90);
+		boton3.setOpaque(true);
+		boton3.setBackground(Color.decode("#232D3F"));
+		calculator.add(boton3);
+		
+		JButton btnSiete = new JButton("7");
+		btnSiete.setBounds(20,250,100,90);
+		btnSiete.setOpaque(true);
+		btnSiete.setBackground(Color.decode("#008170"));
+		btnSiete.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		btnSiete.setForeground(Color.decode("#232D3F"));
+		calculator.add(btnSiete);
+		
+		JButton btnOcho = new JButton("8");
+		btnOcho.setBounds(140,250,100,90);
+		btnOcho.setOpaque(true);
+		btnOcho.setBackground(Color.decode("#008170"));
+		btnOcho.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		btnOcho.setForeground(Color.decode("#232D3F"));
+		calculator.add(btnOcho);
+		
+		JButton btnNueve = new JButton("9");
+		btnNueve.setBounds(260,250,100,90);
+		btnNueve.setOpaque(true);
+		btnNueve.setBackground(Color.decode("#008170"));
+		btnNueve.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		btnNueve.setForeground(Color.decode("#232D3F"));
+		calculator.add(btnNueve);
+		
+		JButton division = new JButton("/");
+		division.setBounds(380,250,100,90);
+		division.setOpaque(true);
+		division.setBackground(Color.decode("#005B41"));
+		division.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		division.setForeground(Color.decode("#0F0F0F"));
+		calculator.add(division);
+		
+		JButton btnCuatro = new JButton("4");
+		btnCuatro.setBounds(20,360,100,90);
+		btnCuatro.setOpaque(true);
+		btnCuatro.setBackground(Color.decode("#008170"));
+		btnCuatro.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		btnCuatro.setForeground(Color.decode("#232D3F"));
+		calculator.add(btnCuatro);
+		
+		JButton btnCinco = new JButton("5");
+		btnCinco.setBounds(140,360,100,90);
+		btnCinco.setOpaque(true);
+		btnCinco.setBackground(Color.decode("#008170"));
+		btnCinco.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		btnCinco.setForeground(Color.decode("#232D3F"));
+		calculator.add(btnCinco);
+		
+		JButton btnSeis = new JButton("6");
+		btnSeis.setBounds(260,360,100,90);
+		btnSeis.setOpaque(true);
+		btnSeis.setBackground(Color.decode("#008170"));
+		btnSeis.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		btnSeis.setForeground(Color.decode("#232D3F"));
+		calculator.add(btnSeis);
+		
+		JButton multiplicar = new JButton("*");
+		multiplicar.setBounds(380,360,100,90);
+		multiplicar.setOpaque(true);
+		multiplicar.setBackground(Color.decode("#005B41"));
+		multiplicar.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		multiplicar.setForeground(Color.decode("#0F0F0F"));
+		calculator.add(multiplicar);
+		
+		JButton btnUno = new JButton("1");
+		btnUno.setBounds(20,470,100,90);
+		btnUno.setOpaque(true);
+		btnUno.setBackground(Color.decode("#008170"));
+		btnUno.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		btnUno.setForeground(Color.decode("#232D3F"));
+		calculator.add(btnUno);
+		
+		JButton btnDos= new JButton("2");
+		btnDos.setBounds(140,470,100,90);
+		btnDos.setOpaque(true);
+		btnDos.setBackground(Color.decode("#008170"));
+		btnDos.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		btnDos.setForeground(Color.decode("#232D3F"));
+		calculator.add(btnDos);
+		
+		JButton btnTres= new JButton("3");
+		btnTres.setBounds(260,470,100,90);
+		btnTres.setOpaque(true);
+		btnTres.setBackground(Color.decode("#008170"));
+		btnTres.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		btnTres.setForeground(Color.decode("#232D3F"));
+		calculator.add(btnTres);
+		
+		JButton restar= new JButton("-");
+		restar.setBounds(380,470,100,90);
+		restar.setOpaque(true);
+		restar.setBackground(Color.decode("#005B41"));
+		restar.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		restar.setForeground(Color.decode("#0F0F0F"));
+		calculator.add(restar);
+		
+		JButton btnCero= new JButton("0");
+		btnCero.setBounds(20,580,100,90);
+		btnCero.setOpaque(true);
+		btnCero.setBackground(Color.decode("#008170"));
+		btnCero.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		btnCero.setForeground(Color.decode("#232D3F"));
+		calculator.add(btnCero);
+		
+		JButton punto= new JButton(".");
+		punto.setBounds(140,580,100,90);
+		punto.setOpaque(true);
+		punto.setBackground(Color.decode("#008170"));
+		punto.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		punto.setForeground(Color.decode("#232D3F"));
+		calculator.add(punto);
+		
+		JButton igualdad= new JButton("=");
+		igualdad.setBounds(260,580,100,90);
+		igualdad.setOpaque(true);
+		igualdad.setBackground(Color.decode("#005B41"));
+		igualdad.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		igualdad.setForeground(Color.decode("#0F0F0F"));
+		calculator.add(igualdad);
+		
+		JButton sumar= new JButton("+");
+		sumar.setBounds(380,580,100,90);
+		sumar.setOpaque(true);
+		sumar.setBackground(Color.decode("#005B41"));
+		sumar.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		sumar.setForeground(Color.decode("#0F0F0F"));
+		calculator.add(sumar);
+
+		this.add(calculator);
+	}
+
+
+
 }
