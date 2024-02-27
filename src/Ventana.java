@@ -18,6 +18,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
 public class Ventana extends JFrame{
@@ -28,12 +29,17 @@ public class Ventana extends JFrame{
 
 		//tamaño de la ventana
 		this.setSize(1000,750);
+		
+		//tamaño de la calculadora
+		//this.setSize(520,750);
 	
 		//cerrar ventana por defecto
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 		//titulo
-		this.setTitle("Mi ventana");
+		//this.setTitle("Mi ventana");
+		//this.setTitle("Calculadora");
+		this.setTitle("Inicio de sesión");
 	
 		//tamaños de la ventana
 		this.setMinimumSize(new Dimension(250,250));//tamaño maximo
@@ -61,7 +67,8 @@ public class Ventana extends JFrame{
 		//this.login();
 		//this.registro();
 		//this.admin();
-		this.calculator();
+		//this.calculator();
+		this.myAccount();
 
 		//size
 		//location
@@ -90,7 +97,12 @@ public class Ventana extends JFrame{
 		login_title.setOpaque(true);//agrega fondo al texto
 		login_title.setBackground(Color.ORANGE);//color al fondo del texto
 		add(login_title);
-
+		
+		JLabel logo = new JLabel();
+		logo.setIcon(new ImageIcon(getClass().getResource("piensa-diferente.png")));
+		logo.setBounds(100,50,256,256);
+		login.add(logo);
+		
 		JLabel usuario = new JLabel("NOMBRE DE USUARIO: ");
 		usuario.setBounds(10,120,250,40);//(x,y,ancho,alto)
 		usuario.setFont(new Font("Comic Sans MS",Font.BOLD,20));//establece fuente del texto
@@ -353,6 +365,8 @@ public class Ventana extends JFrame{
 		JTextField pantalla = new JTextField ();//pantalla de la calculadora
 		pantalla.setBounds(20,20,460,100);
 		pantalla.setBackground(Color.decode("#232D3F"));
+		pantalla.setFont(new Font("Franklin Gothic",Font.BOLD,30));
+		pantalla.setForeground(Color.WHITE);
 		calculator.add(pantalla);
 		
 		JButton borrar = new JButton("CE");
@@ -512,6 +526,95 @@ public class Ventana extends JFrame{
 		this.add(calculator);
 	}
 
+	public void myAccount() {
+		
+		JPanel login = new JPanel();
+		login.setSize(this.getWidth(), this.getHeight());
+		login.setBackground(Color.decode("#3f66b1"));
+		login.setLayout(null);
+		
+		JLabel inicio = new JLabel("Mi cuenta",0);
+		inicio.setSize(350, 80);
+		inicio.setFont(new Font("Berlin Sans FB",Font.BOLD,60));
+		inicio.setForeground(Color.WHITE);
+		inicio.setLocation(300,20);
+		add(inicio);
+		
+		JLabel sesion = new JLabel("Inicio de sesión",0);
+		sesion.setSize(350, 100);
+		sesion.setFont(new Font("Arial",Font.BOLD,40));
+		sesion.setForeground(Color.YELLOW);
+		sesion.setLocation(300,80);
+		add(sesion);
+		
+		JLabel logo = new JLabel();
+		logo.setIcon(new ImageIcon(getClass().getResource("agregar-usuario prueba.png")));
+		logo.setBounds(220,250,40,40);
+		login.add(logo);
+		
+		JLabel usuario = new JLabel("Ingresa tu nombre de usuario: ");
+		usuario.setBounds(270,200,300,40);//(x,y,ancho,alto)
+		usuario.setFont(new Font("Arial",Font.BOLD,20));
+		usuario.setForeground(Color.WHITE);
+		login.add(usuario);
 
+		JTextField nombre = new JTextField();
+		nombre.setBounds(270, 250, 430, 40); 
+	    login.add(nombre);
+	    
+	    JLabel imagenContra = new JLabel();
+	    imagenContra.setIcon(new ImageIcon(getClass().getResource("invisible prueba.png")));
+	    imagenContra.setBounds(220,350,40,40);
+		login.add(imagenContra);
+	    
+	    JLabel contraseña = new JLabel("Ingresa tu contraseña: ");
+		contraseña.setBounds(270,300,250,40);//(x,y,ancho,alto)
+		contraseña.setFont(new Font("Arial",Font.BOLD,20));
+		contraseña.setForeground(Color.WHITE);
+		login.add(contraseña);
+
+		JPasswordField password = new JPasswordField();
+		password.setBounds(270, 350, 430, 40); 
+	    login.add(password);
+	    
+//	    JButton acceder = new JButton("Acceder");
+//	    acceder.setFont(new Font("Arial",Font.BOLD,15));
+//	    acceder.setBounds(380, 420, 200, 60);
+//	    acceder.setOpaque(true);
+//		acceder.setBackground(Color.YELLOW);
+//		login.add(acceder);
+		
+		JLabel btnAcceder = new JLabel();
+		btnAcceder.setIcon(new ImageIcon(getClass().getResource("btnAcceder.png")));
+		btnAcceder.setBounds(380, 420, 200, 60);
+		login.add(btnAcceder);
+		
+		JLabel sinCuenta = new JLabel("¿No tienes cuenta?",0);
+		sinCuenta.setBounds(350,500,250,40);//(x,y,ancho,alto)
+		sinCuenta.setFont(new Font("Arial",Font.BOLD,15));
+		sinCuenta.setForeground(Color.WHITE);
+		login.add(sinCuenta);
+		
+//		JButton registro = new JButton("Registrarse");
+//		registro.setFont(new Font("Arial",Font.BOLD,15));
+//		registro.setBounds(380, 550, 200, 60);
+//		registro.setOpaque(true);
+//		registro.setBackground(Color.decode("#3887BE"));
+//		registro.setForeground(Color.WHITE);
+//		login.add(registro);
+		
+		JLabel btnRegistro = new JLabel();
+		btnRegistro.setIcon(new ImageIcon(getClass().getResource("btnRegistro.png")));
+		btnRegistro.setBounds(380, 550, 200, 60);
+		login.add(btnRegistro);
+		
+		JLabel widget = new JLabel();
+		widget.setBounds(40,100,900,550);
+		widget.setOpaque(true);
+		widget.setBackground(Color.decode("#2b4582"));
+		login.add(widget);
+		
+		this.add(login);
+	}
 
 }
