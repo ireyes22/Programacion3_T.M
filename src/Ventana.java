@@ -1,8 +1,12 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -20,6 +24,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class Ventana extends JFrame{
 	
@@ -38,8 +43,8 @@ public class Ventana extends JFrame{
 	
 		//titulo
 		//this.setTitle("Mi ventana");
-		//this.setTitle("Calculadora");
-		this.setTitle("Inicio de sesión");
+		this.setTitle("Calculadora");
+		//this.setTitle("Inicio de sesión");
 	
 		//tamaños de la ventana
 		this.setMinimumSize(new Dimension(250,250));//tamaño maximo
@@ -68,7 +73,8 @@ public class Ventana extends JFrame{
 		//this.registro();
 		//this.admin();
 		//this.calculator();
-		this.myAccount();
+		//this.myAccount();
+		this.calculadora();
 
 		//size
 		//location
@@ -108,9 +114,9 @@ public class Ventana extends JFrame{
 		usuario.setFont(new Font("Comic Sans MS",Font.BOLD,20));//establece fuente del texto
 		login.add(usuario);//añade el componente
 
-		JTextField email = new JTextField();
-	    email.setBounds(10, 160, 300, 40); // Ajustar las coordenadas y tamaño del campo de texto
-	    login.add(email);
+		JTextField email_field = new JTextField();
+		email_field.setBounds(10, 160, 300, 40); // Ajustar las coordenadas y tamaño del campo de texto
+	    login.add(email_field);
 
 		JLabel contraseña = new JLabel("CONTRASEÑA: ");
 		contraseña.setBounds(10,220,250,40);//(x,y,ancho,alto)
@@ -270,8 +276,8 @@ public class Ventana extends JFrame{
 		login_title.setFont(new Font("Comic Sans MS",Font.BOLD,38));//establece fuente del texto
 		login_title.setForeground(Color.white);//cambiar color al texto
 		login_title.setLocation(350,20);//añade en donde localizar el componente
-		login_title.setOpaque(true);//agrega fondo al texto
-		login_title.setBackground(Color.BLACK);//color al fondo del texto
+		//login_title.setOpaque(true);//agrega fondo al texto
+		//login_title.setBackground(Color.BLACK);//color al fondo del texto
 		adminPanel.add(login_title);
 
 		/*JLabel widget = new JLabel();
@@ -547,16 +553,16 @@ public class Ventana extends JFrame{
 		sesion.setLocation(300,80);
 		add(sesion);
 		
-		JLabel logo = new JLabel();
-		logo.setIcon(new ImageIcon(getClass().getResource("agregar-usuario prueba.png")));
-		logo.setBounds(220,250,40,40);
-		login.add(logo);
+		JLabel user = new JLabel();
+		user.setIcon(new ImageIcon(getClass().getResource("agregar-usuario prueba.png")));
+		user.setBounds(220,250,40,40);
+		login.add(user);
 		
-		JLabel usuario = new JLabel("Ingresa tu nombre de usuario: ");
-		usuario.setBounds(270,200,300,40);//(x,y,ancho,alto)
-		usuario.setFont(new Font("Arial",Font.BOLD,20));
-		usuario.setForeground(Color.WHITE);
-		login.add(usuario);
+		JLabel inputUser = new JLabel("Ingresa tu nombre de usuario: ");
+		inputUser.setBounds(270,200,300,40);//(x,y,ancho,alto)
+		inputUser.setFont(new Font("Arial",Font.BOLD,20));
+		inputUser.setForeground(Color.WHITE);
+		login.add(inputUser);
 
 		JTextField nombre = new JTextField();
 		nombre.setBounds(270, 250, 430, 40); 
@@ -567,11 +573,11 @@ public class Ventana extends JFrame{
 	    imagenContra.setBounds(220,350,40,40);
 		login.add(imagenContra);
 	    
-	    JLabel contraseña = new JLabel("Ingresa tu contraseña: ");
-		contraseña.setBounds(270,300,250,40);//(x,y,ancho,alto)
-		contraseña.setFont(new Font("Arial",Font.BOLD,20));
-		contraseña.setForeground(Color.WHITE);
-		login.add(contraseña);
+	    JLabel inputPassword = new JLabel("Ingresa tu contraseña: ");
+	    inputPassword.setBounds(270,300,250,40);//(x,y,ancho,alto)
+	    inputPassword.setFont(new Font("Arial",Font.BOLD,20));
+	    inputPassword.setForeground(Color.WHITE);
+		login.add(inputPassword);
 
 		JPasswordField password = new JPasswordField();
 		password.setBounds(270, 350, 430, 40); 
@@ -615,6 +621,58 @@ public class Ventana extends JFrame{
 		login.add(widget);
 		
 		this.add(login);
+	}
+	
+	public void calculadora() {
+		
+		this.setSize(480,650);
+		JPanel panel = new JPanel();
+		panel.setSize(this.getWidth(), this.getHeight());
+		panel.setBackground(Color.decode("#AF2655"));
+		panel.setLayout(new BorderLayout());
+        
+		//CODIGO HECHO EN CLASE 
+		JLabel text = new JLabel("100.00",4);
+		text.setOpaque(true);
+		text.setFont(new Font("Arial",Font.BOLD,40));
+		text.setBackground(Color.WHITE);
+		panel.add(text, BorderLayout.NORTH);//indicar en que posicion lo queremos
+		
+		JPanel centro = new JPanel();
+		//centro.setSize(this.getWidth(), this.getHeight());
+		centro.setBackground(Color.decode("#A3B763"));
+		centro.setLayout(new GridLayout(4,3,10,10));
+		panel.add(centro,BorderLayout.CENTER);
+		
+		String btn[] = {"7","8","9","6","5","4","3","2","1","0",".","/"};
+		for(int i=0; i<12; i++) {
+			JButton boton = new JButton(btn[i]);
+			centro.add(boton);
+		}
+		
+		JPanel east = new JPanel();
+		east.setBackground(Color.decode("#EC8F5E"));
+		east.setLayout(new GridLayout(3,1,10,10));
+		panel.add(east,BorderLayout.EAST);
+		
+		String btn2[] = {"+","-","="};
+		for(int i=0; i<3; i++) {
+			JButton boton = new JButton(btn2[i]);
+			east.add(boton);
+		}
+		
+		JPanel west = new JPanel();
+		west.setBackground(Color.BLUE);
+		west.setLayout(new BoxLayout(west,BoxLayout.Y_AXIS));
+		panel.add(west,BorderLayout.WEST);
+		
+		String btn3[] = {"MC","M+","*"};
+		for(int i=0; i<3; i++) {
+			JButton boton = new JButton(btn3[i]);
+			west.add(boton);
+		}
+		
+		this.add(panel);
 	}
 
 }
