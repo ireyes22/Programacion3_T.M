@@ -43,8 +43,9 @@ public class Ventana extends JFrame{
 	
 		//titulo
 		//this.setTitle("Mi ventana");
-		this.setTitle("Calculadora");
+		//this.setTitle("Calculadora");
 		//this.setTitle("Inicio de sesión");
+		this.setTitle("Calculanco el interes");
 	
 		//tamaños de la ventana
 		this.setMinimumSize(new Dimension(250,250));//tamaño maximo
@@ -52,7 +53,7 @@ public class Ventana extends JFrame{
 		this.setResizable(true);
 	
 		//ubicacion en la pantalla
-		this.setLocation(200,200);
+		this.setLocation(100,200);
 	
 		//quita el molde
 		this.setLayout(null);
@@ -74,7 +75,8 @@ public class Ventana extends JFrame{
 		//this.admin();
 		//this.calculator();
 		//this.myAccount();
-		this.calculadora();
+		//this.calculadora();
+		this.calcularInteres();
 
 		//size
 		//location
@@ -624,6 +626,7 @@ public class Ventana extends JFrame{
 	}
 	
 	public void calculadora() {
+
 		
 		this.setSize(480,650);
 		JPanel panel = new JPanel();
@@ -675,4 +678,149 @@ public class Ventana extends JFrame{
 		this.add(panel);
 	}
 
+	public void calcularInteres() {
+		
+		this.setSize(500,690);
+		
+		JPanel panelPrincipal = new JPanel();
+		panelPrincipal.setSize(this.getWidth(), this.getHeight());
+		panelPrincipal.setBackground(Color.decode("#ffffff"));
+		panelPrincipal.setLayout(new BorderLayout());
+		
+		JLabel etiqueta_titulo = new JLabel("     Interés");
+		etiqueta_titulo.setFont(new Font("Arial",Font.BOLD,30));
+		etiqueta_titulo.setForeground(Color.RED);
+		panelPrincipal.add(etiqueta_titulo,BorderLayout.NORTH);
+		
+		
+		//panel que va en el centro
+		JPanel panelCentral = new JPanel();
+		panelCentral.setOpaque(true);
+		panelCentral.setBackground(Color.decode("#ffffff"));
+		panelCentral.setLayout(new GridLayout(2,1,30,30));
+		panelPrincipal.add(panelCentral,BorderLayout.CENTER);
+		
+		
+		//espacios en blanco en los bordes del panel principal
+		JLabel espacio_este = new JLabel("     ");
+		espacio_este.setOpaque(true);
+		espacio_este.setFont(new Font("Arial",Font.BOLD,30));
+		espacio_este.setBackground(Color.decode("#ffffff"));
+		panelPrincipal.add(espacio_este,BorderLayout.EAST);
+		
+		JLabel espacio_oeste = new JLabel("     ");
+		espacio_oeste.setOpaque(true);
+		espacio_oeste.setFont(new Font("Arial",Font.BOLD,30));
+		espacio_oeste.setBackground(Color.decode("#ffffff"));
+		panelPrincipal.add(espacio_oeste,BorderLayout.WEST);
+		
+		JLabel espacio_sur = new JLabel("     ");
+		espacio_sur.setOpaque(true);
+		espacio_sur.setFont(new Font("Arial",Font.BOLD,60));
+		espacio_sur.setBackground(Color.decode("#ffffff"));
+		panelPrincipal.add(espacio_sur,BorderLayout.SOUTH);
+		
+		
+		//panel que pide al usuario las cantidades
+		JPanel panel_central_1 = new JPanel();
+		panel_central_1.setOpaque(true);
+		panel_central_1.setBackground(Color.decode("#99ff99"));
+		panel_central_1.setLayout(null);
+		panelCentral.add(panel_central_1);
+		
+		
+		//etiquetas del panel de calcular el interes
+		JLabel calcular_etiqueta = new JLabel("Calcular interés");
+		calcular_etiqueta.setBounds(10,10,150,30);
+		calcular_etiqueta.setFont(new Font("Arial",Font.BOLD,20));
+		calcular_etiqueta.setForeground(Color.BLACK);
+		panel_central_1.add(calcular_etiqueta,BorderLayout.NORTH);
+		
+		JLabel capital_etiqueta = new JLabel("Capital:");
+		capital_etiqueta.setBounds(30,20,100,100);
+		capital_etiqueta.setOpaque(false);
+		capital_etiqueta.setFont(new Font("Arial",Font.BOLD,15));
+		capital_etiqueta.setForeground(Color.BLACK);
+		panel_central_1.add(capital_etiqueta);
+		
+		JLabel tiempo_etiqueta = new JLabel("Tiempo:");
+		tiempo_etiqueta.setBounds(30,70,100,100);
+		tiempo_etiqueta.setOpaque(false);
+		tiempo_etiqueta.setFont(new Font("Arial",Font.BOLD,15));
+		tiempo_etiqueta.setForeground(Color.BLACK);
+		panel_central_1.add(tiempo_etiqueta);
+		
+		JLabel tasa_etiqueta = new JLabel("Tasa interés:");
+		tasa_etiqueta.setBounds(30,120,100,100);
+		tasa_etiqueta.setOpaque(false);
+		tasa_etiqueta.setFont(new Font("Arial",Font.BOLD,15));
+		tasa_etiqueta.setForeground(Color.BLACK);
+		panel_central_1.add(tasa_etiqueta);
+		
+		
+		//cuadros de texto del panel de calcular el interes
+		JTextField capital_cuadro = new JTextField();
+		capital_cuadro.setBounds(140, 60, 240, 30); 
+		panel_central_1.add(capital_cuadro);
+		
+		JTextField tiempo_cuadro = new JTextField();
+		tiempo_cuadro.setBounds(140, 110, 240, 30); 
+		panel_central_1.add(tiempo_cuadro);
+		
+		JTextField tasa_cuadro = new JTextField();
+		tasa_cuadro.setBounds(140, 160, 240, 30); 
+		panel_central_1.add(tasa_cuadro);
+		
+		
+		//botones del panel de calcular el interes
+		JButton calcular = new JButton("Calcular");
+		calcular.setBounds(50,220,100,40);
+		calcular.setOpaque(true);
+		calcular.setBackground(Color.BLACK);
+		calcular.setForeground(Color.WHITE);
+		panel_central_1.add(calcular);
+		
+		JButton cancelar = new JButton("Cancelar");
+		cancelar.setBounds(260,220,100,40);
+		cancelar.setOpaque(true);
+		cancelar.setBackground(Color.BLACK);
+		cancelar.setForeground(Color.WHITE);
+		panel_central_1.add(cancelar);
+		
+		
+		//panel que muestra los resultados
+		JPanel panel_central_2 = new JPanel();
+		panel_central_2.setOpaque(true);
+		panel_central_2.setBackground(Color.decode("#ff9999"));
+		panel_central_2.setLayout(null);
+		panelCentral.add(panel_central_2);
+		
+		
+		//etiquetas del panel de resultados
+		JLabel interes_etiqueta = new JLabel("Interés:");
+		interes_etiqueta.setBounds(30,20,100,100);
+		interes_etiqueta.setOpaque(false);
+		interes_etiqueta.setFont(new Font("Arial",Font.BOLD,15));
+		interes_etiqueta.setForeground(Color.BLACK);
+		panel_central_2.add(interes_etiqueta);
+		
+		JLabel monto_etiqueta = new JLabel("Monto:");
+		monto_etiqueta.setBounds(30,70,100,100);
+		monto_etiqueta.setOpaque(false);
+		monto_etiqueta.setFont(new Font("Arial",Font.BOLD,15));
+		monto_etiqueta.setForeground(Color.BLACK);
+		panel_central_2.add(monto_etiqueta);
+		
+		
+		//cuadros de texto del panel de resultados
+		JTextField interes_cuadro = new JTextField();
+		interes_cuadro.setBounds(140, 60, 240, 30); 
+		panel_central_2.add(interes_cuadro);
+		
+		JTextField monto_cuadro = new JTextField();
+		monto_cuadro.setBounds(140, 110, 240, 30); 
+		panel_central_2.add(monto_cuadro);
+		
+		this.add(panelPrincipal);
+	}
 }
