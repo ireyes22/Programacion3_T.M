@@ -3,6 +3,8 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Graphics;
+
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
@@ -28,6 +30,8 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.ScrollPane;
+import java.awt.Canvas;
+import java.awt.Panel;
 
 public class RegistroUsuarios {
 
@@ -209,7 +213,7 @@ public class RegistroUsuarios {
 		panelCenter.setLayout(new GridLayout(0, 2, 0, 0));
 		panelDatosGenerales.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setIcon(new ImageIcon(getClass().getResource("iconoPerfil.png")));
 		lblNewLabel.setBounds(125, 47, 149, 138);
 		panelPerfil.add(lblNewLabel);
@@ -311,4 +315,5 @@ public class RegistroUsuarios {
 		frmRegistroDeUsuarios.setBounds(100, 100, 808, 663);
 		frmRegistroDeUsuarios.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 }

@@ -1,10 +1,19 @@
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -76,7 +85,8 @@ public class Ventana extends JFrame{
 		//this.calculator();
 		//this.myAccount();
 		//this.calculadora();
-		this.calcularInteres();
+		//this.calcularInteres();
+		//this.paint(getGraphics());
 
 		//size
 		//location
@@ -822,5 +832,65 @@ public class Ventana extends JFrame{
 		panel_central_2.add(monto_cuadro);
 		
 		this.add(panelPrincipal);
+	}
+	
+	public void paint(Graphics g) {
+		super.paint(g);
+		
+		Graphics2D g2d = (Graphics2D) g;
+		
+		//asigna color
+		g2d.setColor(Color.BLUE);
+		
+		g2d.fillRect(50, 50, 200, 100);
+		
+		g2d.clearRect(100, 100, 100, 100);
+		//g2d.drawLine(30, 70, 770, 70);
+		
+		//dibuja arcos
+		//g2d.drawArc(300, 300, 100, 100, 45, 80);
+		
+		//pinta media luna
+		g2d.fillArc(300, 300, 100, 100, 45, 180);
+		
+		g2d.setColor(Color.BLACK);
+		//dibuja linea
+		g2d.drawLine(0, 0, 500, 500);
+		
+		//ovalo 
+		g2d.drawOval(400, 400, 50, 80);
+		
+		//ovalo con relleno
+		g2d.fillOval(350, 400, 50, 80);
+		
+		int xPoints[]={100,250,300};
+		int yPoints[]={100,200,350};
+		//int nPoints[]={1,2};
+		g2d.drawPolygon(xPoints, yPoints, 3);
+		g2d.setColor(Color.RED);
+		g2d.fillPolygon(xPoints, yPoints, 3);
+		
+		//estilo de texto (siempre va primero)
+		g2d.setFont(new Font("Comic Sans MS",Font.BOLD,38));
+		//dibuja el texto
+		g2d.drawString("Hola", 250, 100);
+		
+		//storke: contorno
+		g2d.setStroke(new BasicStroke(10));
+		g2d.drawRoundRect(420, 150, 200, 150, 10, 10);
+		
+//		Toolkit t = Toolkit.getDefaultToolkit ();
+//        Image imagen = t.getImage ("src/piensa-diferente.png");
+//        g.drawImage (imagen, 0, 0, this);	
+		
+		try {
+			
+			BufferedImage image = ImageIO.read(new File("src/piensa-diferente.png"));
+			g2d.drawImage(image, 10, 10, null);
+		}catch(IOException e)
+		{
+			//TODO Auto-generated catch black
+			e.printStackTrace();
+		}
 	}
 }
