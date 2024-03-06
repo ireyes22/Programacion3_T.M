@@ -54,12 +54,12 @@ public class Ventana extends JFrame{
 		//this.setTitle("Mi ventana");
 		//this.setTitle("Calculadora");
 		//this.setTitle("Inicio de sesión");
-		this.setTitle("Calculanco el interes");
+		this.setTitle("Casa :D");
 	
 		//tamaños de la ventana
 		this.setMinimumSize(new Dimension(250,250));//tamaño maximo
 		this.setMaximumSize(new Dimension(1000,270));//tamaño minimo
-		this.setResizable(true);
+		this.setResizable(false);
 	
 		//ubicacion en la pantalla
 		this.setLocation(100,200);
@@ -86,7 +86,6 @@ public class Ventana extends JFrame{
 		//this.myAccount();
 		//this.calculadora();
 		//this.calcularInteres();
-		//this.paint(getGraphics());
 
 		//size
 		//location
@@ -833,64 +832,147 @@ public class Ventana extends JFrame{
 		
 		this.add(panelPrincipal);
 	}
-	
+
+//	//EJERCICIO HECHO EN CLASE
+//	public void paint(Graphics g) {
+//		super.paint(g);
+//		
+//		Graphics2D g2d = (Graphics2D) g;
+//		
+//		//asigna color
+//		g2d.setColor(Color.BLUE);
+//		
+//		g2d.fillRect(50, 50, 200, 100);
+//		
+//		g2d.clearRect(100, 100, 100, 100);
+//		//g2d.drawLine(30, 70, 770, 70);
+//		
+//		//dibuja arcos
+//		//g2d.drawArc(300, 300, 100, 100, 45, 80);
+//		
+//		//pinta media luna
+//		g2d.fillArc(300, 300, 100, 100, 45, 180);
+//		
+//		g2d.setColor(Color.BLACK);
+//		//dibuja linea
+//		g2d.drawLine(0, 0, 500, 500);
+//		
+//		//ovalo 
+//		g2d.drawOval(400, 400, 50, 80);
+//		
+//		//ovalo con relleno
+//		g2d.fillOval(350, 400, 50, 80);
+//		
+//		int xPoints[]={100,250,300};
+//		int yPoints[]={100,200,350};
+//		//int nPoints[]={1,2};
+//		g2d.drawPolygon(xPoints, yPoints, 3);
+//		g2d.setColor(Color.RED);
+//		g2d.fillPolygon(xPoints, yPoints, 3);
+//		
+//		//estilo de texto (siempre va primero)
+//		g2d.setFont(new Font("Comic Sans MS",Font.BOLD,38));
+//		//dibuja el texto
+//		g2d.drawString("Hola", 250, 100);
+//		
+//		//storke: contorno
+//		g2d.setStroke(new BasicStroke(10));
+//		g2d.drawRoundRect(420, 150, 200, 150, 10, 10);
+//		
+//		//subir imagenes
+////		Toolkit t = Toolkit.getDefaultToolkit ();
+////        Image imagen = t.getImage ("src/piensa-diferente.png");
+////        g.drawImage (imagen, 0, 0, this);	
+//		
+//		try {
+//			
+//			BufferedImage image = ImageIO.read(new File("src/btnAcceder.png"));
+//			g2d.drawImage(image, 10, 10, null);
+//		}catch(IOException e)
+//		{
+//			//TODO Auto-generated catch black
+//			e.printStackTrace();
+//		}
+//	}
+
 	public void paint(Graphics g) {
 		super.paint(g);
 		
 		Graphics2D g2d = (Graphics2D) g;
 		
-		//asigna color
-		g2d.setColor(Color.BLUE);
+		//el cielo
+		g2d.setColor(Color.decode("#16589e")); 
+	    g2d.fillRect(0, 0, getWidth(), getHeight());
+	    
+	    //cerco
+  		int y = 530;
+  		g2d.setColor(Color.decode("#d5953b")); 
+  		for (int i = 0; i < 4; i++) {
+  		    g2d.drawRect(0, y, 1000, 10); 
+  		    g2d.fillRect(0, y, 1000,10); 
+  		    y += 30; 
+  		}
+  		
+  		int x = 20;
+  		g2d.setColor(Color.decode("#ffb951")); 
+  		for (int i = 0; i < 49; i++) {
+  		    g2d.drawRect(x, 510, 20, 140); 
+  		    g2d.fillRect(x, 510, 20, 140); 
+  		    x += 40; 
+  		}
+	    
+	    //pared
+	    g2d.setColor(Color.decode("#02fab8")); 
+	    g2d.drawRect(250, 200, 500, 500); 
+	    g2d.fillRect(250, 200, 500, 500);
+	    
+	    g2d.setColor(Color.decode("#747575")); 
+	    g2d.setStroke(new BasicStroke(5));
+		g2d.drawRoundRect(250, 200, 500, 500, 5, 5);
+	    
+	    //puerta
+	    g2d.setColor(Color.decode("#e6f0ed")); 
+	    g2d.drawRect(550, 420, 110, 500); 
+	    g2d.fillRect(550, 420, 110, 500);
+	    
+	    g2d.setColor(Color.decode("#747575")); 
+	    g2d.setStroke(new BasicStroke(8));
+		g2d.drawRoundRect(550, 420, 110, 500, 10, 10);
 		
-		g2d.fillRect(50, 50, 200, 100);
+		g2d.setColor(Color.decode("#ffea00")); 
+		g2d.drawRect(640,540,10,10);
+		g2d.fillRect(640,540,10,10); 
+	    
+	    //ventana
+	    g2d.setColor(Color.decode("#e6f0ed")); 
+	    g2d.drawRect(350, 340, 110, 100); 
+	    g2d.fillRect(350, 340, 110, 100);
+	    
+	    g2d.setColor(Color.decode("#b4f9e6")); 
+	    g2d.drawRect(370, 360, 70, 60); 
+	    g2d.fillRect(370, 360, 40, 60);
+	    
+	    g2d.setColor(Color.decode("#747575")); 
+	    g2d.setStroke(new BasicStroke(10));
+		g2d.drawRoundRect(350, 340, 110, 100,0,10);
+	    
+	    //techo
+		g2d.setColor(Color.decode("#dadadc"));
+		g2d.fillRect(260, 160, 10, 40);
 		
-		g2d.clearRect(100, 100, 100, 100);
-		//g2d.drawLine(30, 70, 770, 70);
+		g2d.setColor(Color.decode("#dadadc"));
+		g2d.fillRect(280, 180, 10, 40);
 		
-		//dibuja arcos
-		//g2d.drawArc(300, 300, 100, 100, 45, 80);
+	    g2d.setColor(Color.decode("#587970"));
+		g2d.fillRect(230, 190, 540, 50);
 		
-		//pinta media luna
-		g2d.fillArc(300, 300, 100, 100, 45, 180);
+		//piso de la casa
+		g2d.setColor(Color.decode("#26b00e"));
+		g2d.drawLine(0, 650, 1000, 650);
+		g2d.fillRect(0, 650, 1000, 650);
 		
-		g2d.setColor(Color.BLACK);
-		//dibuja linea
-		g2d.drawLine(0, 0, 500, 500);
-		
-		//ovalo 
-		g2d.drawOval(400, 400, 50, 80);
-		
-		//ovalo con relleno
-		g2d.fillOval(350, 400, 50, 80);
-		
-		int xPoints[]={100,250,300};
-		int yPoints[]={100,200,350};
-		//int nPoints[]={1,2};
-		g2d.drawPolygon(xPoints, yPoints, 3);
-		g2d.setColor(Color.RED);
-		g2d.fillPolygon(xPoints, yPoints, 3);
-		
-		//estilo de texto (siempre va primero)
-		g2d.setFont(new Font("Comic Sans MS",Font.BOLD,38));
-		//dibuja el texto
-		g2d.drawString("Hola", 250, 100);
-		
-		//storke: contorno
-		g2d.setStroke(new BasicStroke(10));
-		g2d.drawRoundRect(420, 150, 200, 150, 10, 10);
-		
-//		Toolkit t = Toolkit.getDefaultToolkit ();
-//        Image imagen = t.getImage ("src/piensa-diferente.png");
-//        g.drawImage (imagen, 0, 0, this);	
-		
-		try {
-			
-			BufferedImage image = ImageIO.read(new File("src/piensa-diferente.png"));
-			g2d.drawImage(image, 10, 10, null);
-		}catch(IOException e)
-		{
-			//TODO Auto-generated catch black
-			e.printStackTrace();
-		}
+		g2d.setColor(Color.decode("#634c16"));
+		g2d.drawLine(0, 700, 1000, 700);
+		g2d.fillRect(0, 700, 1000, 700);
 	}
 }
