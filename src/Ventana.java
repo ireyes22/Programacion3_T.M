@@ -16,6 +16,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -83,13 +84,14 @@ public class Ventana extends JFrame{
 	
 	public void iniciarComponentes() {
 	
-		this.login();
-		this.registro();
+		//this.login();
+		//this.registro();
 		//this.admin();
 		//this.calculator();
 		//this.myAccount();
 		//this.calculadora();
 		//this.calcularInteres();
+		this.botones();
 
 		//size
 		//location
@@ -176,6 +178,20 @@ public class Ventana extends JFrame{
                 }
 				else {
 					pwd_field.setBorder(BorderFactory.createLineBorder(Color.green,2));
+				}
+				
+				if(usr.equals("yayis")) {
+					System.out.println("Bienvenido");
+				}
+				else {
+					System.out.println("usuario incorrecto");
+				}
+				
+				if(pwd.equals("23012003")) {
+					System.out.println("Bienvenido");
+				}
+				else {
+					System.out.println("usuario incorrecto");
 				}
 			}
 
@@ -286,7 +302,7 @@ public class Ventana extends JFrame{
 		accept.setFont(new Font("Comic Sans MS",Font.BOLD,28));//establece fuente del texto
 		accept.setBounds(50, 530, 400, 70);
 		registro.add(accept);
-		name_text.addActionListener(new ActionListener() {
+		accept.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -309,7 +325,7 @@ public class Ventana extends JFrame{
 				}
 				
 				if(!acceptRadio.isSelected()) {
-					acceptRadio.setBorder(null);
+					acceptRadio.setBorderPainted(true);
 					acceptRadio.setBorder(BorderFactory.createLineBorder(Color.red,2));
 				}
 				else {
@@ -1822,4 +1838,49 @@ public class Ventana extends JFrame{
 //		g2d.drawRect(0, 655, 1000, 5);
 //	    
 //	}
+
+	public void botones() {
+		this.setSize(500,750);
+		
+		JPanel btn_panel = new JPanel();
+		btn_panel.setSize(this.getWidth(), this.getHeight());
+		btn_panel.setBackground(Color.red);
+		this.add(btn_panel);
+		btn_panel.setBackground(new Color(128, 188, 189));//añade color en RGB
+		btn_panel.setLayout(null);//quitar el molde
+		
+		JButton botonClick = new JButton("Click me!");
+		botonClick.setFont(new Font("Comic Sans MS",Font.BOLD,28));//establece fuente del texto
+		botonClick.setBounds(50, 340, 200, 70);
+		botonClick.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int x=(int)Math.floor(Math.random()*450+1);
+				int y=(int)Math.floor(Math.random()*650+1);
+				int w=(int)Math.floor(Math.random()*120+1);
+				int h=(int)Math.floor(Math.random()*120+1);
+				
+				Random rand=new Random();
+				float r=rand.nextFloat();
+				float g=rand.nextFloat();
+				float b=rand.nextFloat();
+				
+				JButton otro_boton = new JButton("Click me!");
+				otro_boton.setBounds(x,y,w,h);
+				otro_boton.setOpaque(true);
+				otro_boton.setBackground(new Color(r,g,b));
+				btn_panel.add(otro_boton);	
+				getContentPane().repaint();
+				getContentPane().revalidate();
+				
+			}
+
+		});
+		btn_panel.add(botonClick);
+		
+		this.add(btn_panel);
+	}
 }
+
