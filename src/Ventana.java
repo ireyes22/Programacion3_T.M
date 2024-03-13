@@ -41,8 +41,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class Ventana extends JFrame{
-	
+public class Ventana extends JFrame implements MouseListener
+{
+	JPanel btn_panel;
 	/*Constructor que define los atributos base
 	 * de mi ventana */
 	public Ventana() {
@@ -93,6 +94,7 @@ public class Ventana extends JFrame{
 		//this.calculadora();
 		//this.calcularInteres();
 		this.botones();
+		addMouseListener(this);
 
 		//size
 		//location
@@ -1843,7 +1845,7 @@ public class Ventana extends JFrame{
 	public void botones() {
 		this.setSize(500,750);
 		
-		JPanel btn_panel = new JPanel();
+		btn_panel = new JPanel();
 		btn_panel.setSize(this.getWidth(), this.getHeight());
 		btn_panel.setBackground(Color.red);
 		this.add(btn_panel);
@@ -1883,6 +1885,7 @@ public class Ventana extends JFrame{
 					}
 				});
 				btn_panel.add(otro_boton);	
+				
 				getContentPane().repaint();
 				getContentPane().revalidate();
 				
@@ -1893,5 +1896,64 @@ public class Ventana extends JFrame{
 		
 		this.add(btn_panel);
 	}
+
+@Override
+public void mouseClicked(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mousePressed(MouseEvent e) {
+	// TODO Auto-generated method stub
+
+	int w=(int)Math.floor(Math.random()*120+1);
+	int h=(int)Math.floor(Math.random()*120+1);
+	
+	Random rand=new Random();
+	float r=rand.nextFloat();
+	float g=rand.nextFloat();
+	float b=rand.nextFloat();
+	
+	JButton otro_boton = new JButton(r+","+g+","+b);
+	otro_boton.setBounds(e.getX(),e.getY(),w,h);
+	otro_boton.setOpaque(true);	
+	otro_boton.setBackground(new Color(r,g,b));
+	btn_panel.add(otro_boton);
+	otro_boton.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			String codigo = ((JButton) e.getSource()).getText();
+			JOptionPane.showMessageDialog(null, codigo , "Color", JOptionPane.WARNING_MESSAGE);
+			
+		}
+	});
+	
+	
+	
+	
+	this.repaint();
+	this.validate();
+}
+
+@Override
+public void mouseReleased(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseEntered(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseExited(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
 }
 
