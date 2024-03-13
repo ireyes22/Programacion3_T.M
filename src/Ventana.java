@@ -30,6 +30,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -1851,7 +1852,7 @@ public class Ventana extends JFrame{
 		
 		JButton botonClick = new JButton("Click me!");
 		botonClick.setFont(new Font("Comic Sans MS",Font.BOLD,28));//establece fuente del texto
-		botonClick.setBounds(50, 340, 200, 70);
+		botonClick.setBounds(150, 500, 200, 70);
 		botonClick.addActionListener(new ActionListener() {
 
 			@Override
@@ -1867,10 +1868,20 @@ public class Ventana extends JFrame{
 				float g=rand.nextFloat();
 				float b=rand.nextFloat();
 				
-				JButton otro_boton = new JButton("Click me!");
+				JButton otro_boton = new JButton(r+","+g+","+b);
 				otro_boton.setBounds(x,y,w,h);
 				otro_boton.setOpaque(true);
 				otro_boton.setBackground(new Color(r,g,b));
+				otro_boton.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						String codigo = ((JButton) e.getSource()).getText();
+						JOptionPane.showMessageDialog(null, codigo , "Color", JOptionPane.WARNING_MESSAGE);
+						
+					}
+				});
 				btn_panel.add(otro_boton);	
 				getContentPane().repaint();
 				getContentPane().revalidate();
