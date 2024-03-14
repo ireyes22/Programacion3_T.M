@@ -1879,8 +1879,11 @@ public class Ventana extends JFrame implements MouseListener
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-						String codigo = ((JButton) e.getSource()).getText();
-						JOptionPane.showMessageDialog(null, codigo , "Color", JOptionPane.WARNING_MESSAGE);
+						JButton yo = ((JButton) e.getSource());
+						btn_panel.remove(yo);
+						
+						getContentPane().repaint();
+						getContentPane().revalidate();
 						
 					}
 				});
