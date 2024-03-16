@@ -11,6 +11,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -41,13 +43,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class Ventana extends JFrame implements MouseListener
-{
+public class Ventana extends JFrame implements MouseListener,KeyListener{
 	JPanel btn_panel;
 	/*Constructor que define los atributos base
 	 * de mi ventana */
 	public Ventana() {
-
+		
+		//hace visible la pantalla
+		this.setVisible(true);
+				
 		//tamaño de la ventana
 		this.setSize(1000,750);
 		
@@ -78,10 +82,11 @@ public class Ventana extends JFrame implements MouseListener
 		this.setLocationRelativeTo(null);
 	
 		//agrega los componentes
-		this.iniciarComponentes();
+		iniciarComponentes();
+		this.addKeyListener(this);
+		this.addMouseListener(this);
 		
-		//hace visible la pantalla
-		this.setVisible(true);
+		 this.requestFocus();
 	}
 	
 	public void iniciarComponentes() {
@@ -94,7 +99,9 @@ public class Ventana extends JFrame implements MouseListener
 		//this.calculadora();
 		//this.calcularInteres();
 		this.botones();
-		addMouseListener(this);
+//		addKeyListener(this);
+//		addMouseListener(this);
+		// addKeyListener(this);
 
 		//size
 		//location
@@ -1900,71 +1907,96 @@ public class Ventana extends JFrame implements MouseListener
 		this.add(btn_panel);
 	}
 
-@Override
-public void mouseClicked(MouseEvent e) {
-	// TODO Auto-generated method stub
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-}
-
-@Override
-public void mousePressed(MouseEvent e) {
-	// TODO Auto-generated method stub
-
-	int w=(int)Math.floor(Math.random()*120+1);
-	int h=(int)Math.floor(Math.random()*120+1);
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
 	
-	Random rand=new Random();
-	float r=rand.nextFloat();
-	float g=rand.nextFloat();
-	float b=rand.nextFloat();
+		int w=(int)Math.floor(Math.random()*120+1);
+		int h=(int)Math.floor(Math.random()*120+1);
+		
+		Random rand=new Random();
+		float r=rand.nextFloat();
+		float g=rand.nextFloat();
+		float b=rand.nextFloat();
+		
+		JButton otro_boton = new JButton(r+","+g+","+b);
+		otro_boton.setBounds(e.getX(),e.getY(),w,h);
+		otro_boton.setOpaque(true);	
+		otro_boton.setBackground(new Color(r,g,b));
+		btn_panel.add(otro_boton);
+		otro_boton.addActionListener(new ActionListener() {
 	
-	JButton otro_boton = new JButton(r+","+g+","+b);
-	otro_boton.setBounds(e.getX(),e.getY(),w,h);
-	otro_boton.setOpaque(true);	
-	otro_boton.setBackground(new Color(r,g,b));
-	btn_panel.add(otro_boton);
-	otro_boton.addActionListener(new ActionListener() {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			String codigo = ((JButton) e.getSource()).getText();
-			JOptionPane.showMessageDialog(null, codigo , "Color", JOptionPane.WARNING_MESSAGE);
-			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+//				String codigo = ((JButton) e.getSource()).getText();
+//				JOptionPane.showMessageDialog(null, codigo , "Color", JOptionPane.WARNING_MESSAGE);
+				JButton yo = ((JButton) e.getSource());
+				btn_panel.remove(yo);
+				
+				getContentPane().repaint();
+				getContentPane().revalidate();
+			}
+		});
+		
+		this.repaint();
+		this.validate();
+	}
+	
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		// create object of Random class
+		Random obj = new Random();
+		int rand_num = obj.nextInt(0xffffff + 1);
+		// format it as hexadecimal string and print
+		String colorCode = String.format("#%06x", rand_num);
+		
+		btn_panel.setBackground(Color.decode(colorCode));
+	}
+	
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub	
+		
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println(e.getKeyCode()+" "+e.getKeyChar());
+		if(e.getKeyCode()==127) 
+		{
+			btn_panel.removeAll();
+			getContentPane().repaint();
+			getContentPane().revalidate();
 		}
-	});
+		
+	}
 	
-	
-	
-	
-	this.repaint();
-	this.validate();
-}
-
-@Override
-public void mouseReleased(MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void mouseEntered(MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-	// create object of Random class
-	Random obj = new Random();
-	int rand_num = obj.nextInt(0xffffff + 1);
-	// format it as hexadecimal string and print
-	String colorCode = String.format("#%06x", rand_num);
-	
-	btn_panel.setBackground(Color.decode(colorCode));
-	
-}
-
-@Override
-public void mouseExited(MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
