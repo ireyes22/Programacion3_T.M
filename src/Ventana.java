@@ -1,6 +1,7 @@
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -1989,6 +1990,22 @@ public class Ventana extends JFrame implements MouseListener,KeyListener{
 			btn_panel.removeAll();
 			getContentPane().repaint();
 			getContentPane().revalidate();
+		}
+		
+		if(e.getKeyCode()==87)
+		{
+			Component[] elementos = btn_panel.getComponents();
+			for (int i =0;i<elementos.length;i++)
+			{
+				if(elementos[i].getClass().toString().equals("class javax.swing.JButton")) 
+				{
+					JButton btn=((JButton)elementos[i]);
+					btn.setSize(btn.getHeight()+13,btn.getWidth()+10);
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				}
+				
+			}
 		}
 		
 	}
