@@ -1860,50 +1860,50 @@ public class Ventana extends JFrame implements MouseListener,KeyListener{
 		btn_panel.setBackground(new Color(128, 188, 189));//añade color en RGB
 		btn_panel.setLayout(null);//quitar el molde
 		
-		JButton botonClick = new JButton("Click me!");
-		botonClick.setFont(new Font("Comic Sans MS",Font.BOLD,28));//establece fuente del texto
-		botonClick.setBounds(150, 500, 200, 70);
-		botonClick.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				int x=(int)Math.floor(Math.random()*450+1);
-				int y=(int)Math.floor(Math.random()*650+1);
-				int w=(int)Math.floor(Math.random()*120+1);
-				int h=(int)Math.floor(Math.random()*120+1);
-				
-				Random rand=new Random();
-				float r=rand.nextFloat();
-				float g=rand.nextFloat();
-				float b=rand.nextFloat();
-				
-				JButton otro_boton = new JButton(r+","+g+","+b);
-				otro_boton.setBounds(x,y,w,h);
-				otro_boton.setOpaque(true);
-				otro_boton.setBackground(new Color(r,g,b));
-				otro_boton.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						JButton yo = ((JButton) e.getSource());
-						btn_panel.remove(yo);
-						
-						getContentPane().repaint();
-						getContentPane().revalidate();
-						
-					}
-				});
-				btn_panel.add(otro_boton);	
-				
-				getContentPane().repaint();
-				getContentPane().revalidate();
-				
-			}
-
-		});
-		btn_panel.add(botonClick);
+//		JButton botonClick = new JButton("Click me!");
+//		botonClick.setFont(new Font("Comic Sans MS",Font.BOLD,28));//establece fuente del texto
+//		botonClick.setBounds(150, 500, 200, 70);
+//		botonClick.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				// TODO Auto-generated method stub
+//				int x=(int)Math.floor(Math.random()*450+1);
+//				int y=(int)Math.floor(Math.random()*650+1);
+//				int w=(int)Math.floor(Math.random()*120+1);
+//				int h=(int)Math.floor(Math.random()*120+1);
+//				
+//				Random rand=new Random();
+//				float r=rand.nextFloat();
+//				float g=rand.nextFloat();
+//				float b=rand.nextFloat();
+//				
+//				JButton otro_boton = new JButton(r+","+g+","+b);
+//				otro_boton.setBounds(x,y,w,h);
+//				otro_boton.setOpaque(true);
+//				otro_boton.setBackground(new Color(r,g,b));
+//				otro_boton.addActionListener(new ActionListener() {
+//
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//						// TODO Auto-generated method stub
+//						JButton yo = ((JButton) e.getSource());
+//						btn_panel.remove(yo);
+//						
+//						getContentPane().repaint();
+//						getContentPane().revalidate();
+//						
+//					}
+//				});
+//				btn_panel.add(otro_boton);	
+//				
+//				getContentPane().repaint();
+//				getContentPane().revalidate();
+//				
+//			}
+//
+//		});
+//		btn_panel.add(botonClick);
 		
 		this.add(btn_panel);
 	}
@@ -1985,7 +1985,7 @@ public class Ventana extends JFrame implements MouseListener,KeyListener{
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println(e.getKeyCode()+" "+e.getKeyChar());
-		if(e.getKeyCode()==127) 
+		if(e.getKeyCode()==127 || e.getKeyCode()==8) 
 		{
 			btn_panel.removeAll();
 			getContentPane().repaint();
@@ -2006,6 +2006,67 @@ public class Ventana extends JFrame implements MouseListener,KeyListener{
 				}
 				
 			}
+		}
+		
+		switch (e.getKeyCode()) 
+		{
+			case 37: 
+				Component[] elemento_izquierda = btn_panel.getComponents();
+				for (int i =0;i<elemento_izquierda.length;i++)
+				{
+					if(elemento_izquierda[i].getClass().toString().equals("class javax.swing.JButton")) 
+					{
+						JButton btn_izquierda=((JButton)elemento_izquierda[i]);
+						btn_izquierda.setLocation(btn_izquierda.getX()-10,btn_izquierda.getY());
+						getContentPane().repaint();
+						getContentPane().revalidate();
+					}	
+				}
+			break;
+			
+			case 39:
+				Component[] elemento_derecha = btn_panel.getComponents();
+				for (int i =0;i<elemento_derecha.length;i++)
+				{
+					if(elemento_derecha[i].getClass().toString().equals("class javax.swing.JButton")) 
+					{
+						JButton btn_derecha=((JButton)elemento_derecha[i]);
+						btn_derecha.setLocation(btn_derecha.getX()+10,btn_derecha.getY());
+						getContentPane().repaint();
+						getContentPane().revalidate();
+					}	
+				}
+			break;
+		
+			case 38: 
+				
+				Component[] elemento_arriba = btn_panel.getComponents();
+				for (int i =0;i<elemento_arriba.length;i++)
+				{
+					if(elemento_arriba[i].getClass().toString().equals("class javax.swing.JButton")) 
+					{
+						JButton btn_arriba=((JButton)elemento_arriba[i]);
+						btn_arriba.setLocation(btn_arriba.getX(),btn_arriba.getY()-10);
+						getContentPane().repaint();
+						getContentPane().revalidate();
+					}	
+				}
+				
+			break;
+			
+			case 40: 
+				Component[] elemento_abajo = btn_panel.getComponents();
+				for (int i =0;i<elemento_abajo.length;i++)
+				{
+					if(elemento_abajo[i].getClass().toString().equals("class javax.swing.JButton")) 
+					{
+						JButton btn_abajo=((JButton)elemento_abajo[i]);
+						btn_abajo.setLocation(btn_abajo.getX(),btn_abajo.getY()+10);
+						getContentPane().repaint();
+						getContentPane().revalidate();
+					}	
+				}
+			break;
 		}
 		
 	}
