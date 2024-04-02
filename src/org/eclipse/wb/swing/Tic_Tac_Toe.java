@@ -12,17 +12,22 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class Tic_Tac_Toe {
 
 	private JFrame frmTicTacToe;
 	public static boolean turno;
+	public static int contador_X=0;
+	public static int contador_O=0;
 
 	public static JButton btnNewButton; 
 	public static JButton btnNewButton_1; 
@@ -33,6 +38,11 @@ public class Tic_Tac_Toe {
 	public static JButton btnNewButton_6;
 	public static JButton btnNewButton_7;
 	public static JButton btnNewButton_8;
+	private JPanel panel_1;
+	private JPanel panel_2;
+	private JLabel labelX;
+	private JLabel labelO;
+	private JButton btnReiniciar;
 	/**
 	 * Launch the application.
 	 */
@@ -69,10 +79,10 @@ public class Tic_Tac_Toe {
 		frmTicTacToe.setTitle("Tic Tac Toe");
 		frmTicTacToe.setBounds(100, 100, 805, 655);
 		frmTicTacToe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmTicTacToe.getContentPane().setLayout(new CardLayout(0, 0));
+		frmTicTacToe.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		frmTicTacToe.getContentPane().add(panel, "name_19973696011700");
+		frmTicTacToe.getContentPane().add(panel);
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
 		
 		btnNewButton = new JButton("");
@@ -201,17 +211,58 @@ public class Tic_Tac_Toe {
 			
 		});
 		panel.add(btnNewButton_8);
+		
+		panel_1 = new JPanel();
+		frmTicTacToe.getContentPane().add(panel_1, BorderLayout.NORTH);
+		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		labelX = new JLabel("X: 0");
+		labelX.setHorizontalAlignment(SwingConstants.CENTER);
+		labelX.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		panel_1.add(labelX);
+		
+		labelO = new JLabel("O: 0");
+		labelO.setHorizontalAlignment(SwingConstants.CENTER);
+		labelO.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		panel_1.add(labelO);
+		
+		panel_2 = new JPanel();
+		frmTicTacToe.getContentPane().add(panel_2, BorderLayout.SOUTH);
+		
+		btnReiniciar = new JButton("Reiniciar");
+		btnReiniciar.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnReiniciar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				Component[] elementos = panel.getComponents();
+				
+				for (int i =0;i<elementos.length;i++)
+				{
+					if(elementos[i].getClass().toString().equals("class javax.swing.JButton")) 
+					{
+						JButton btn=((JButton)elementos[i]);
+						btn.setText("");
+						btn.setBackground(null);
+						btn.setEnabled(true);
+					}
+					
+				}
+			}
+		});
+		panel_2.add(btnReiniciar);
 	}
 	
 	public void click(JButton btn) 
 	{
-	
-
 				if(btn.getText().equals("")) {
 					
 					//2.- el turno
 					if(turno) 
 					{
+//						btn.setIcon(new ImageIcon(getClass().getResource("mas30.png")));
 						btn.setText("O");
 						btn.setBackground(Color.WHITE);
 						btn.setFont(new Font("Comic Sans MS",Font.BOLD,58));
@@ -219,6 +270,7 @@ public class Tic_Tac_Toe {
 						
 					}else 
 					{
+//						btn.setIcon(new ImageIcon(getClass().getResource("eliminar30px.png")));
 						btn.setText("X" );
 						btn.setBackground(Color.BLACK);
 						btn.setFont(new Font("Comic Sans MS",Font.BOLD,58));
@@ -232,10 +284,17 @@ public class Tic_Tac_Toe {
 				if(btnNewButton.getText().equals(btnNewButton_1.getText()) 
 						&& btnNewButton.getText().equals(btnNewButton_2.getText()) 
 						&& !btnNewButton.getText().equals(""))  {
-
-						JOptionPane.showMessageDialog(null, "Felicidades! ganaste","Inane warning", JOptionPane.WARNING_MESSAGE);
-					
 						
+//						if(btnNewButton.getText().equals("X")) {
+//							contador_O++;
+//							labelX.setText("X:" + contador_X);
+//						}else
+//						{
+//							contador_X++;
+//							labelO.setText("O:" + contador_O);
+//						}
+						
+						JOptionPane.showMessageDialog(null, "Felicidades! ganaste","Inane warning", JOptionPane.WARNING_MESSAGE);	
 				}
 				
 				if(btnNewButton_3.getText().equals(btnNewButton_4.getText()) 
@@ -296,4 +355,5 @@ public class Tic_Tac_Toe {
 				}
 			
 	}
+	
 }
