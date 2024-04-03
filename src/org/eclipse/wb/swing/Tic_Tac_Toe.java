@@ -257,103 +257,177 @@ public class Tic_Tac_Toe {
 	
 	public void click(JButton btn) 
 	{
-				if(btn.getText().equals("")) {
-					
-					//2.- el turno
-					if(turno) 
-					{
-//						btn.setIcon(new ImageIcon(getClass().getResource("mas30.png")));
-						btn.setText("O");
-						btn.setBackground(Color.WHITE);
-						btn.setFont(new Font("Comic Sans MS",Font.BOLD,58));
-						turno=false;
-						
-					}else 
-					{
-//						btn.setIcon(new ImageIcon(getClass().getResource("eliminar30px.png")));
-						btn.setText("X" );
-						btn.setBackground(Color.BLACK);
-						btn.setFont(new Font("Comic Sans MS",Font.BOLD,58));
-						turno=true;
-					}
-					
-				}
+		if(btn.getText().equals("")) 
+		{
+			//2.- el turno
+			if(turno) 
+			{
+//				btn.setIcon(new ImageIcon(getClass().getResource("mas30.png")));
+				btn.setText("O");
+				btn.setFont(new Font("Comic Sans MS",Font.BOLD,58));
+				btn.setBackground(Color.WHITE);
+				turno=false;
 				
-				btn.setEnabled(false);
+			}else 
+			{
+//				btn.setIcon(new ImageIcon(getClass().getResource("cancelar.png")));
+				btn.setText("X" );
+				btn.setFont(new Font("Comic Sans MS",Font.BOLD,58));
+				btn.setBackground(Color.BLACK);
+				turno=true;
+			}
+			
+		}
+		
+		btn.setEnabled(false);
+		
+		if(btnNewButton.getText().equals(btnNewButton_1.getText()) 
+				&& btnNewButton.getText().equals(btnNewButton_2.getText()) 
+				&& !btnNewButton.getText().equals(""))  {
 				
-				if(btnNewButton.getText().equals(btnNewButton_1.getText()) 
-						&& btnNewButton.getText().equals(btnNewButton_2.getText()) 
-						&& !btnNewButton.getText().equals(""))  {
-						
-//						if(btnNewButton.getText().equals("X")) {
-//							contador_O++;
+//						if(btnNewButton.getText().equals("X")&&!btnNewButton.getText().equals("")) {
+//							contador_X++;
 //							labelX.setText("X:" + contador_X);
 //						}else
 //						{
-//							contador_X++;
+//							contador_O++;
 //							labelO.setText("O:" + contador_O);
 //						}
-						
-						JOptionPane.showMessageDialog(null, "Felicidades! ganaste","Inane warning", JOptionPane.WARNING_MESSAGE);	
-				}
-				
-				if(btnNewButton_3.getText().equals(btnNewButton_4.getText()) 
-						&& btnNewButton_3.getText().equals(btnNewButton_5.getText()) 
-						&& !btnNewButton_3.getText().equals(""))  {
+			ganar();
+			JOptionPane.showMessageDialog(null, "Felicidades! ganaste","Inane warning", JOptionPane.WARNING_MESSAGE);	
+		}
+		
+		if(btnNewButton_3.getText().equals(btnNewButton_4.getText()) 
+				&& btnNewButton_3.getText().equals(btnNewButton_5.getText()) 
+				&& !btnNewButton_3.getText().equals(""))  {
 
-						JOptionPane.showMessageDialog(null, "Felicidades! ganaste","Inane warning", JOptionPane.WARNING_MESSAGE);
-						
-				}
+//					if(btnNewButton_3.getText().equals("X")&&!btnNewButton_3.getText().equals("")) {
+//						contador_X++;
+//						labelX.setText("X:" + contador_X);
+//					}else
+//					{
+//						contador_O++;
+//						labelO.setText("O:" + contador_O);
+//					}
+			ganar();
+			JOptionPane.showMessageDialog(null, "Felicidades! ganaste","Inane warning", JOptionPane.WARNING_MESSAGE);
 				
-				if(btnNewButton_6.getText().equals(btnNewButton_7.getText()) 
-						&& btnNewButton_6.getText().equals(btnNewButton_8.getText()) 
-						&& !btnNewButton_6.getText().equals(""))  {
+		}
+		
+		if(btnNewButton_6.getText().equals(btnNewButton_7.getText()) 
+				&& btnNewButton_6.getText().equals(btnNewButton_8.getText()) 
+				&& !btnNewButton_6.getText().equals(""))  {
 
-						JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
-						
-				}
+//					if(btnNewButton_6.getText().equals("X")&&!btnNewButton_6.getText().equals("")) {
+//						contador_X++;
+//						labelX.setText("X:" + contador_X);
+//					}else
+//					{
+//						contador_O++;
+//						labelO.setText("O:" + contador_O);
+//					}
+			ganar();
+			JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
 				
-				if(btnNewButton.getText().equals(btnNewButton_3.getText()) 
-						&& btnNewButton.getText().equals(btnNewButton_6.getText()) 
-						&& !btnNewButton.getText().equals(""))  {
+		}
+		
+		if(btnNewButton.getText().equals(btnNewButton_3.getText()) 
+				&& btnNewButton.getText().equals(btnNewButton_6.getText()) 
+				&& !btnNewButton.getText().equals(""))  {
 
-						JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
-						
-				}
+//					if(btnNewButton.getText().equals("X")&&!btnNewButton.getText().equals("")) {
+//						contador_X++;
+//						labelX.setText("X:" + contador_X);
+//					}else
+//					{
+//						contador_O++;
+//						labelO.setText("O:" + contador_O);
+//					}
+			ganar();
+			JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
 				
-				if(btnNewButton_1.getText().equals(btnNewButton_4.getText()) 
-						&& btnNewButton_1.getText().equals(btnNewButton_7.getText()) 
-						&& !btnNewButton_1.getText().equals(""))  {
+		}
+		
+		if(btnNewButton_1.getText().equals(btnNewButton_4.getText()) 
+				&& btnNewButton_1.getText().equals(btnNewButton_7.getText()) 
+				&& !btnNewButton_1.getText().equals(""))  {
 
-						JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
-						
-				}
+//			if(btnNewButton_1.getText().equals("X")&&!btnNewButton_1.getText().equals("")) {
+//			contador_X++;
+//			labelX.setText("X:" + contador_X);
+//		}else
+//		{
+//			contador_O++;
+//			labelO.setText("O:" + contador_O);
+//		}
+			ganar();
+			JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
 				
-				if(btnNewButton_2.getText().equals(btnNewButton_5.getText()) 
-						&& btnNewButton_2.getText().equals(btnNewButton_8.getText()) 
-						&& !btnNewButton_2.getText().equals(""))  {
+		}
+		
+		if(btnNewButton_2.getText().equals(btnNewButton_5.getText()) 
+				&& btnNewButton_2.getText().equals(btnNewButton_8.getText()) 
+				&& !btnNewButton_2.getText().equals(""))  {
 
-						JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
-						
+//					if(btnNewButton_2.getText().equals("X")&&!btnNewButton_2.getText().equals("")) {
+//						contador_X++;
+//						labelX.setText("X:" + contador_X);
+//					}else
+//					{
+//						contador_O++;
+//						labelO.setText("O:" + contador_O);
+//					}
+			ganar();
+			JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
 				
-				}
-				
-				if(btnNewButton.getText().equals(btnNewButton_4.getText()) 
-						&& btnNewButton.getText().equals(btnNewButton_8.getText()) 
-						&& !btnNewButton.getText().equals(""))  {
+		
+		}
+		
+		if(btnNewButton.getText().equals(btnNewButton_4.getText()) 
+				&& btnNewButton.getText().equals(btnNewButton_8.getText()) 
+				&& !btnNewButton.getText().equals(""))  {
 
-						JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
-						
-				}
+//					if(btnNewButton.getText().equals("X")&&!btnNewButton.getText().equals("")) {
+//						contador_X++;
+//						labelX.setText("X:" + contador_X);
+//					}else
+//					{
+//						contador_O++;
+//						labelO.setText("O:" + contador_O);
+//					}
+			ganar();
+			JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
 				
-				if(btnNewButton_6.getText().equals(btnNewButton_4.getText()) 
-						&& btnNewButton_6.getText().equals(btnNewButton_2.getText()) 
-						&& !btnNewButton_6.getText().equals(""))  {
+		}
+		
+		if(btnNewButton_6.getText().equals(btnNewButton_4.getText()) 
+				&& btnNewButton_6.getText().equals(btnNewButton_2.getText()) 
+				&& !btnNewButton_6.getText().equals(""))  {
 
-						JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
-						
-				}
-			
+//					if(btnNewButton_6.getText().equals("X")&&!btnNewButton_6.getText().equals("")) {
+//						contador_X++;
+//						labelX.setText("X:" + contador_X);
+//					}else
+//					{
+//						contador_O++;
+//						labelO.setText("O:" + contador_O);
+//					}
+			ganar();
+			JOptionPane.showMessageDialog(null, "Felicidades! ganaste", "Inane warning", JOptionPane.WARNING_MESSAGE);
+				
+		}
+	
 	}
 	
+	public void ganar() 	
+	{
+		if(turno) {
+			contador_X++;
+			labelX.setText("X: " + contador_X);
+					
+		}else {
+			contador_O++;
+			labelO.setText("O: " + contador_O);
+		}
+	}
 }
