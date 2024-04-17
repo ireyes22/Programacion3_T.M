@@ -20,13 +20,18 @@ import java.awt.event.KeyListener;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
+
+import org.eclipse.wb.swing.Jugador;
+
 import java.awt.event.KeyAdapter;
 
 public class Tablero_dibujo extends JFrame implements KeyListener {
 
 	private JFrame frame;
 	private JPanel panel_tablero;
-	public int x=10,y=10;
+
+	Jugador j1 = new Jugador(350, 200, 50, 50, "#D20062");
+	Jugador obj = new Jugador(100,50,50,220,"#41B06E");
 
 	/**
 	 * Launch the application.
@@ -83,10 +88,13 @@ public class Tablero_dibujo extends JFrame implements KeyListener {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
                 
-                g2d.setColor(Color.MAGENTA);
-                g2d.fillRect(x, y, 50, 50);
+                g2d.setColor(Color.decode(j1.getColor()));
+                g2d.fillRect(j1.getX(), j1.getY(), j1.getAncho(), j1.getAlto());
+               
+                g2d.setColor(Color.decode(obj.getColor()));
+                g2d.fillRect(obj.getX(), obj.getY(), obj.getAncho(), obj.getAlto());
                 
-
+                
             }
         };
 		panel_tablero.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -107,19 +115,40 @@ public class Tablero_dibujo extends JFrame implements KeyListener {
 		
 		switch(e.getKeyCode()) {
 		case 87://w
-			y-=10;
+			//y-=10;
+			j1.setY(j1.getY()-10);
+			if(j1.colision(obj)) {
+				System.out.println("Colision");
+				j1.setY(j1.getY()+10);
+			}
+			
 			break;
 			
 		case 83://s
-			y+=10;
+			//y+=10;
+			j1.setY(j1.getY()+10);
+			if(j1.colision(obj)) {
+				System.out.println("Colision");
+				j1.setY(j1.getY()-10);
+			}
 			break;
 			
 		case 68://d
-			x+=10;
+			//x+=10;
+			j1.setX(j1.getX()+10);
+			if(j1.colision(obj)) {
+				System.out.println("Colision");
+				j1.setX(j1.getX()-10);
+			}
 			break;
 			
 		case 65://a
-			x-=10;
+			//x-=10;
+			j1.setX(j1.getX()-10);
+			if(j1.colision(obj)) {
+				System.out.println("Colision");
+				j1.setX(j1.getX()+10);
+			}
 			break;
 			
 		default:
@@ -128,6 +157,7 @@ public class Tablero_dibujo extends JFrame implements KeyListener {
 		}
 		
 		frame.repaint();
+		
 		
 	}
 
