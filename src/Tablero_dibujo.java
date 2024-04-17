@@ -26,6 +26,7 @@ public class Tablero_dibujo extends JFrame implements KeyListener {
 
 	private JFrame frame;
 	private JPanel panel_tablero;
+	public int x=10,y=10;
 
 	/**
 	 * Launch the application.
@@ -83,7 +84,7 @@ public class Tablero_dibujo extends JFrame implements KeyListener {
                 Graphics2D g2d = (Graphics2D) g;
                 
                 g2d.setColor(Color.MAGENTA);
-                g2d.fillRect(300, 150, 150, 125);
+                g2d.fillRect(x, y, 50, 50);
                 
 
             }
@@ -103,6 +104,30 @@ public class Tablero_dibujo extends JFrame implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println(e.getKeyChar() + " " + e.getKeyCode());
+		
+		switch(e.getKeyCode()) {
+		case 87://w
+			y-=10;
+			break;
+			
+		case 83://s
+			y+=10;
+			break;
+			
+		case 68://d
+			x+=10;
+			break;
+			
+		case 65://a
+			x-=10;
+			break;
+			
+		default:
+			break;
+				
+		}
+		
+		frame.repaint();
 		
 	}
 
