@@ -21,7 +21,15 @@ import javax.swing.JPasswordField;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileReader;
+import java.io.IOException;
+
 import javax.swing.SwingConstants;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import java.awt.Font;
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
@@ -285,29 +293,50 @@ public class nuevaTarea {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String usr = textNombre.getText();				
-				String pwd = new String(passwordField .getPassword());
 				
-				//comprueba que el campo de usuario no este vacio 
-				if (usr.length()<=0) {
-					textNombre.setBorder(BorderFactory.createLineBorder(Color.red,2));
-                }
-				else {
-					textNombre.setBorder(BorderFactory.createLineBorder(Color.green,2));
+				JSONParser parser = new JSONParser();
+			       
+				try {
+		            
+		            Object obj = parser.parse(new FileReader("src/user")); 
+		            JSONObject jsonObject = (JSONObject) obj;
+		           
+		            JSONArray users = (JSONArray) jsonObject.get("users");
+
+		            for (Object user : users) {
+		                JSONObject userObject = (JSONObject) user;
+		                String id = String.valueOf(userObject.get("id"));
+		                String firstName = (String) userObject.get("firstName");
+		                String lastName = (String) userObject.get("lastName");
+		                String maidenName = (String) userObject.get("maidenName");
+		                String age = String.valueOf(userObject.get("age"));
+		                String gender = (String) userObject.get("gender");
+		                String phone = (String) userObject.get("phone");
+		                String username = (String) userObject.get("username");
+		                String password = (String) userObject.get("password");
+		                String email = (String) userObject.get("email");
+
+		                System.out.println("ID: " + id);
+		                System.out.println("First Name: " + firstName);
+		                System.out.println("Last Name: " + lastName);
+		                System.out.println("Maiden Name: " + maidenName);
+		                System.out.println("Age: " + age);
+		                System.out.println("Gender: " + gender);
+		                System.out.println("Phone: " + phone);
+		                System.out.println("Username: " + username);
+		                System.out.println("email: "+ email);
+		                System.out.println("Password: " + password);
+		                System.out.println("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-." + "\n");
+		            }
+
+		        } catch (IOException e1) {
+		            e1.printStackTrace();
+		        } //Read json file path where json file in system
+				catch (org.json.simple.parser.ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 				
-				//comprueba que el campo de contraseña no este vacio
-				if (pwd.length()<=0) {
-					passwordField .setBorder(BorderFactory.createLineBorder(Color.red,2));
-                }
-				else {
-					passwordField .setBorder(BorderFactory.createLineBorder(Color.green,2));
-				}
-				
-				if(usr.length()==0 || pwd.length()==0) {
-					
-					JOptionPane.showMessageDialog( null, "Error al querer acceder",  "Un aviso", JOptionPane.ERROR_MESSAGE);
-				}
 			}
 		});
 		panel_6.add(btnNewButton);
