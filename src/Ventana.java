@@ -654,10 +654,10 @@ public class Ventana extends JFrame implements MouseListener,KeyListener{
 		sesion.setLocation(300,80);
 		add(sesion);
 		
-		JLabel user = new JLabel();
-		user.setIcon(new ImageIcon(getClass().getResource("agregar-usuario prueba.png")));
-		user.setBounds(220,250,40,40);
-		login.add(user);
+//		JLabel user = new JLabel();
+//		user.setIcon(new ImageIcon(getClass().getResource("agregar-usuario prueba.png")));
+//		user.setBounds(220,250,40,40);
+//		login.add(user);
 		
 		JLabel inputUser = new JLabel("Ingresa tu nombre de usuario: ");
 		inputUser.setBounds(270,200,300,40);//(x,y,ancho,alto)
@@ -669,10 +669,10 @@ public class Ventana extends JFrame implements MouseListener,KeyListener{
 		nombre.setBounds(270, 250, 430, 40); 
 	    login.add(nombre);
 	    
-	    JLabel imagenContra = new JLabel();
-	    imagenContra.setIcon(new ImageIcon(getClass().getResource("invisible prueba.png")));
-	    imagenContra.setBounds(220,350,40,40);
-		login.add(imagenContra);
+//	    JLabel imagenContra = new JLabel();
+//	    imagenContra.setIcon(new ImageIcon(getClass().getResource("invisible prueba.png")));
+//	    imagenContra.setBounds(220,350,40,40);
+//		login.add(imagenContra);
 	    
 	    JLabel inputPassword = new JLabel("Ingresa tu contraseña: ");
 	    inputPassword.setBounds(270,300,250,40);//(x,y,ancho,alto)
@@ -691,10 +691,10 @@ public class Ventana extends JFrame implements MouseListener,KeyListener{
 //		acceder.setBackground(Color.YELLOW);
 //		login.add(acceder);
 		
-		JLabel btnAcceder = new JLabel();
-		btnAcceder.setIcon(new ImageIcon(getClass().getResource("btnAcceder.png")));
-		btnAcceder.setBounds(380, 420, 200, 60);
-		login.add(btnAcceder);
+//		JLabel btnAcceder = new JLabel();
+//		btnAcceder.setIcon(new ImageIcon(getClass().getResource("btnAcceder.png")));
+//		btnAcceder.setBounds(380, 420, 200, 60);
+//		login.add(btnAcceder);
 		
 		JLabel sinCuenta = new JLabel("¿No tienes cuenta?",0);
 		sinCuenta.setBounds(350,500,250,40);//(x,y,ancho,alto)
@@ -710,10 +710,10 @@ public class Ventana extends JFrame implements MouseListener,KeyListener{
 //		registro.setForeground(Color.WHITE);
 //		login.add(registro);
 		
-		JLabel btnRegistro = new JLabel();
-		btnRegistro.setIcon(new ImageIcon(getClass().getResource("btnRegistro.png")));
-		btnRegistro.setBounds(380, 550, 200, 60);
-		login.add(btnRegistro);
+//		JLabel btnRegistro = new JLabel();
+//		btnRegistro.setIcon(new ImageIcon(getClass().getResource("btnRegistro.png")));
+//		btnRegistro.setBounds(380, 550, 200, 60);
+//		login.add(btnRegistro);
 		
 		JLabel widget = new JLabel();
 		widget.setBounds(40,100,900,550);
