@@ -90,6 +90,7 @@ public class AuthView {
 			public void actionPerformed(ActionEvent e) {
 				if(model.login(txtUsername.getText(),txtPassword.getText())) {
 					System.out.println("adentro del sistema");
+					
 				}
 				else {
 					System.out.println("no pudo acceder");
@@ -103,6 +104,7 @@ public class AuthView {
 		lblRegister.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblRegister.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblRegister);
+		
 		
 		return panel;
 	}
