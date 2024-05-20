@@ -209,6 +209,8 @@ public class Login {
 		panelSecond.add(lblWelcome);
 		panelSecond.setVisible(true);
 		
+		
+		
 	}
 
 }
